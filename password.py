@@ -13,5 +13,24 @@ class User:
     def save_user(self):
        
         User.user_list.append(self)
+
+    def delete_user(self):
+
+        '''
+        delete_user method deletes a saved user from the user_list
+        '''
+
+        User.user_list.remove(self)
+
+class Credentials:   
+
+    def __init__(self,accname,userName, password):
+        """
+        user credentials to be stored
+        """
+        self.accname = accname
+        self.userName = userName
+        self.password = password
+
     
       
