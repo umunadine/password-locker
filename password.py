@@ -22,7 +22,9 @@ class User:
 
         User.user_list.remove(self)
 
-class Credentials:   
+class Credentials:  
+
+    credential_list = [] # Empty user list 
 
     def __init__(self,accname,userName, password):
         """
@@ -31,6 +33,14 @@ class Credentials:
         self.accname = accname
         self.userName = userName
         self.password = password
+
+    def save_credential(self):
+
+        '''
+        save_contact method saves contact objects into contact_list
+        '''
+
+        Credentials.credential_list.append(self)
 
     
       
