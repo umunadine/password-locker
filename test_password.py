@@ -80,6 +80,17 @@ class TestCredentials(unittest.TestCase):
             test_credential.save_credential()
             self.assertEqual(len(Credentials.credential_list),2)
 
+    def test_delete_contact(self):
+            '''
+            test_delete_contact to test if we can remove a contact from our contact list
+            '''
+            self.new_credential.save_credential()
+            test_credential = Credentials("Facebook","tess","Opp12") # new credential
+            test_credential.save_credential()
+
+            self.new_credential.delete_credential()# Deleting a credential object
+            self.assertEqual(len(Credentials.credential_list),1)
+
 
 
 

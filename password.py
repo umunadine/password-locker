@@ -42,5 +42,13 @@ class Credentials:
 
         Credentials.credential_list.append(self)
 
+    def delete_credential(self):
+
+        '''
+        delete_contact method deletes a saved contact from the contact_list
+        '''
+
+        Credentials.credential_list.remove(self)
+
     
       
