@@ -11,7 +11,7 @@ class User:
 
 
     def save_user(self):
-     """
-    A method that saves a new user.
-     """
+       
         User.user_list.append(self)
+    
+      
