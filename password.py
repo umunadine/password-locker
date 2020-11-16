@@ -1,7 +1,6 @@
 import pyperclip
 
 
-
 class User:
     """
     Class that generates new instances of user.
@@ -17,6 +16,10 @@ class User:
     def save_user(self):
        
         User.user_list.append(self)
+
+    @classmethod
+    def display_user(cls):
+        return cls.user_list
 
     def delete_user(self):
 
@@ -45,6 +48,17 @@ class Credentials:
         '''
 
         Credentials.credential_list.append(self)
+
+    @classmethod
+    def verify_user(cls,username, password):
+        """
+        method to verify whether the user is in our user_list or not
+        """
+        a_user = ""
+        for user in User.user_list:
+            if(user.username == username and user.password == password):
+                    a_user == user.username
+        return a_user
 
     def delete_credential(self):
 
@@ -86,8 +100,9 @@ class Credentials:
         '''
         return cls.credential_list
 
+    
     @classmethod
     def copy_password(cls,accname):
         credential_found = Credentials.find_credential(accname)
-        pyperclip.copy(credential_found.password)
+        pyperclip.copy(credential_found.accname)
       

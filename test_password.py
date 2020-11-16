@@ -2,6 +2,7 @@ import unittest
 from password import User
 from password import Credentials
 
+
 class TestUser(unittest.TestCase):
 
     '''
@@ -125,6 +126,7 @@ class TestCredentials(unittest.TestCase):
         '''
 
         self.assertEqual(Credentials.display_credentials(),Credentials.credential_list)
+
 
     
 
