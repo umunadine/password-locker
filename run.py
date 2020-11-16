@@ -52,7 +52,7 @@ def find_credential(credentials):
     '''
     Function that finds a contact by number and returns the contact
     '''
-    return Credentials.find_credential(accname)
+    return Credentials.find_credential(credentials)
 
 def display_user():
     """
@@ -95,7 +95,7 @@ def main():
         login = login_user(username,password)
         print('\n')
         print(f"Hello {username}.Welcome To PassWord Locker Manager")  
-        print("Choose between the following:\n CC - Create a new credential \n DC - Display Credentials \n FC - Find a credential \n DC - Delete credential \n EX - Exit the application \n")
+        print("Choose between the following:\n CC - Create a new credential \n DC - Display Credentials \n FC - Find a credential \n DX - Delete credential \n EX - Exit the application \n")
         short_code=input("").lower().strip()
         if short_code == "cc":
             print("Creating a new credential")
@@ -111,10 +111,44 @@ def main():
             print("\n")
         elif short_code == "dc":
             print("Display Credentials")
+            print('-'*50)
+            if display_credentials():
+                print("Here is a list of all your credentials")
+                print("\n")
+                for credentials in display_credentials():
+                    print(f"{credentials.accname} {credentials.userName} .....{credentials.password}")
+                    print("\n")
+            else:
+                print('\n')
+                print("You dont seem to have any credentials saved yet")
+                print('\n')
         elif short_code == "fc":
             print("Finding Credentials")
-        elif short_code == "dc":
+            print("-"*50)
+            print("Enter the account name")
+            search_name = input()
+            if check_existing_contact(search_name):
+                 
+                search_credential = find_credential(search_name)
+                print(f"{search_credential.accname} {search_credential.userName}")
+                print('-' * 20)
+
+                print(f"Account Name.......{search_credential.accname}")
+                print(f"username.......{search_credential.userName}")
+            else:
+                print("Credential does not exist")
+        elif short_code == "dx":
             print("Deleting Credentials")
+            print("-"*50)
+            print("Enter the account name")
+            search_name = input()
+            if find_credential(search_name):
+                search_credential = find_credential(search_name)
+                search_credential.delete_credentials()
+                print(f"Your stored credentials successfully deleted!!!")
+                print('\n')
+
+
         elif short_code == "ex":
             print("Thanks for using password locker")
         else:
